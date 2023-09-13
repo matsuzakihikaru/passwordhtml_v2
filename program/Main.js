@@ -40,9 +40,10 @@ function onClick(e) {
 			document.getElementById('next').style.visibility = 'visible';
 
 			context.font = "48px sans-serif";
-			let sentences = ["推測した条件を入力してください．",
-				"条件がまったく分からなかった場合には、「不明」などの単語を入力してください。",			
-				"次に進むを押すと正解の条件と認証正解数が表示されます。"]
+			let sentences = ["推測した条件を入力してください",
+				"条件がまったく分からなかった場合には",
+				"「不明」などの単語を入力してください。",			
+				"次に進むを押すと正解の条件が表示されます。"]
 
 			for (let i = 0; i < sentences.length; i++) {
 				context.fillText(sentences[i], 0, 48*i+48);
