@@ -160,10 +160,11 @@ let imgsize = 256;
 
 //認証回答時間
 let times = [];
-let n_time;
+
 
 //実験開始時間
 var now_time = new Date();
+let n_time = now_time;
 let all_start_time = now_time.getTime();;
 //実験総時間
 let all_time;
