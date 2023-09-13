@@ -2,48 +2,38 @@
 
 class Hack {
 
-	draw() {
-		let turn = screen%20;//turnは4以上
-		let pass = Math.floor(screen / 20);
+    draw() {
+        let turn = screen%20;
+        let pass = Math.floor(screen / 20);
 
-		context.clearRect(0, 0, 1500, 1000);
+        context.clearRect(0, 0, 1500, 1000);
 
-        context.font = "24px sans-serif";
-        if (pass == 0 || pass == 7) {
-        	context.fillText("表示されている条件を満たす画像をクリックしてください " +(turn-3)+" / 8組目 ", 0, 128*3+24);
+        context.font = "48px sans-serif";
+
+        if (turn+1 <= 4) {
+            context.fillText("正規 " + (turn+1)+" / 4組目 ", 0, imgsize*3+48);
         }
         else{
-        	context.fillText("推測した条件を満たす画像をクリックしてください " +(turn-3)+" / 8組目 ", 0, 128*3+24);
+            context.fillText("非正規 " + (turn-3)+" / 8組目 ", 0, imgsize*3+48);
         }
 
-        context.fillText((pass+1)+" / 14 セット ", 0, 128*3+48);
+        context.fillText((pass+1)+" / 4セット ", 0, imgsize*3+48*2);
 
-        if (pass==0) {
-        	context.fillText("条件は「前髪で額が隠れている人」です。", 0, 128*3+72);
-        }
-        if (pass==7) {
-        	context.fillText("条件は「髪がパーマの人」です。", 0, 128*3+72);
-        }        
+        context.fillText("パスワード番号 : " +(rand[pass]+1),0, imgsize*3+48*3);
 
-		//画像描画
+        //画像描画
         let img = new Image();
-        if (pass == 0) {
-        	img.src = './new_images/'+13+"/"+(turn+1)+".png";
-        }
-        else if (pass < 7) {
-        	img.src = './new_images/'+(rand[pass-1]+1)+"/"+(turn+1)+".png";
-        }
-        else if (pass == 7) {
-        	img.src = './new_images/'+14+"/"+(turn+1)+".png";
-        }
-        else {
-        	img.src = './new_images/'+(rand[pass-2]+1)+"/"+(turn+1)+".png";
-        }
 
+        img.src = './new_images/'+(rand[pass]+1)+"/"+(turn+1)+".png";
+        
         img.onload = function(){
             context.drawImage(img, 0, 0, imgsize*3, imgsize*3);}
 
-	    canvas.addEventListener('click', this.onClick, false);
-	}
+        if (turn+1 == 5) {
+            window.setTimeout(function(){alert("非正規認証者に交代してください");}, 100);
+        }
+
+        canvas.addEventListener('click', this.onClick, false);
+    }
 
 }
