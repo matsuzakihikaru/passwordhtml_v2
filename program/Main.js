@@ -66,7 +66,7 @@ function next() {
  		document.getElementById('next').style.visibility = 'hidden';
 
 		var now_time = new Date();
-        times.push(now_time.getTime()-n_time);
+        times.push(String(now_time.getTime()-n_time));
         n_time = now_time;
 
 		let hack = new Hack();
@@ -110,6 +110,7 @@ function next() {
 				}
 
 			points.push(point);
+			auth_points.push(auth_point);
 			conditions.push(condition.value);
 
  		}
@@ -159,7 +160,7 @@ canvas.addEventListener('click', onClick, false);
 let imgsize = 256;
 
 //認証回答時間
-let times = [];
+let times = ["N"];
 
 
 //実験開始時間
