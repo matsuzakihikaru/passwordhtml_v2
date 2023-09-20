@@ -16,22 +16,27 @@ function onClick(e) {
         let x = e.offsetX;
         let y = e.offsetY;
         let number = Math.floor(y / imgsize) * 3 + Math.floor(x / imgsize) + 1;
+
         answer.push(number);
 
 		var now_time = new Date();
         times.push(now_time.getTime()-n_time);
         n_time = now_time;
 
+
         if (screen%20 <= 11) {
+
 			let hack = new Hack();
 			hack.draw();
 			screen++;
         }
         else{
-      	
+
+        	screen++;
+
 			let pass = Math.floor(screen / 20);
 
-     		//screen%20==12
+     		//screen%20==13
 			window.scrollTo(0,0);
 			context.clearRect(0, 0, 1500, 1000);
 
@@ -77,7 +82,7 @@ function next() {
 		return;
  	}
 
- 	if (screen%20 == 12 & screen<80) {
+ 	if (screen%20 == 13 & screen<80) {
  		let pass = Math.floor(screen / 20);
 
  		if (confirm("推測した条件は「"+condition.value+"」でいいですか？")==true) {
@@ -98,7 +103,7 @@ function next() {
  			}
 
  			condition.style.visibility = 'hidden';
- 			screen+=8;
+ 			screen+=7;
 
  			context.clearRect(0, 0, 1500, 1000);
 			context.font = "48px sans-serif";
