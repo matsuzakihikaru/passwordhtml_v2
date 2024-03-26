@@ -15,7 +15,7 @@ function onClick(e) {
  		context.clearRect(0, 0, 1500, 1000);
         let x = e.offsetX;
         let y = e.offsetY;
-        let number = Math.floor(y / imgsize) * 3 + Math.floor(x / imgsize) + 1;
+        let number = Math.floor(y / imgsize) * 3 + Math.floor(x / imgsize);
 
         answer.push(number);
 
@@ -65,7 +65,7 @@ function onClick(e) {
 function next() {
 
 	//画面更新0->1
- 	if (screen%20 == 0 & screen<80) {
+ 	if (screen%20 == 0 & screen<100) {
  		alert("正規認証者が操作してください")
  		context.clearRect(0, 0, 1500, 1000);
  		document.getElementById('next').style.visibility = 'hidden';
@@ -82,7 +82,7 @@ function next() {
 		return;
  	}
 
- 	if (screen%20 == 13 & screen<80) {
+ 	if (screen%20 == 13 & screen<100) {
  		let pass = Math.floor(screen / 20);
 
  		if (confirm("推測した条件は「"+condition.value+"」でいいですか？")==true) {
@@ -120,7 +120,7 @@ function next() {
 
  		}
 
- 	if (screen == 80) {
+ 	if (screen == 100) {
 
 		console.log("finished");
 
@@ -178,23 +178,23 @@ let all_time;
 let answer = [];
 
 //実験用データ
-let data =[
+let data =[["歯が見えている人", [0, 2, 7, 5, 4, 1, 4, 1, 4, 4, 3, 6]],
 
-	["耳に髪がかかっていない人", [6, 2, 4, 7, 7, 2, 5, 5, 9, 9, 8, 8]],
+	["前髪で額が隠れている人", [8, 7, 8, 1, 0, 5, 3, 6, 5, 4, 1, 7]],
 
-	["モンゴロイドの女性", [2, 1, 5, 1, 9, 4, 2, 7, 3, 9, 5, 8]],
+	["背景が緑", [0, 2, 6, 2, 5, 6, 6, 2, 1, 0, 3, 1]],
 
-	["背景が緑", [2, 1, 9, 2, 2, 7, 2, 4, 1, 7, 6, 9]],
+	["耳に髪がかかっていない(短髪の)人", [1, 6, 4, 6, 2, 6, 8, 6, 8, 0, 8, 5]],
 
-	["幼い女の子", [3, 5, 5, 3, 4, 4, 9, 8, 2, 4, 4, 7]]
+	["頭に被り物をしている人", [7, 3, 8, 4, 4, 2, 1, 7, 6, 3, 5, 7]]
 
 	];
 
 //random順番
-let rand = [0,1,2,3];
+let rand = [0,1,2,3,4];
 
 //randomの逆対応
-let rev_rand = [-1,-1,-1,-1];
+let rev_rand = [-1,-1,-1,-1,-1];
 
 for(let i = rand.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -209,7 +209,7 @@ for (let i=0; i<rand.length; i++) {
 
 let all_data = [];
 
-for (let i=0; i<4; i++) {
+for (let i=0; i<5; i++) {
 	all_data.push(data[rand[i]]);
 }
 

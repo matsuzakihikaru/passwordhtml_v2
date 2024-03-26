@@ -17,14 +17,14 @@ class Hack {
             context.fillText("非正規 " + (turn-3)+" / 8組目 ", 0, imgsize*3+48);
         }
 
-        context.fillText((pass+1)+" / 4セット ", 0, imgsize*3+48*2);
+        context.fillText((pass+1)+" / 5セット ", 0, imgsize*3+48*2);
 
-        context.fillText("パスワード番号 : " +(rand[pass]+1),0, imgsize*3+48*3);
+        context.fillText("パスワード番号 : " +(rand[pass]),0, imgsize*3+48*3);
 
         //画像描画
         let img = new Image();
 
-        img.src = './new_images/'+(rand[pass]+1)+"/"+(turn+1)+".png";
+        img.src = './new_images/'+(rand[pass])+"/auth_"+(turn)+".png";
         
         img.onload = function(){
             context.drawImage(img, 0, 0, imgsize*3, imgsize*3);}
